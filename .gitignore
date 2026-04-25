@@ -1,0 +1,3 @@
+./portfolio-spa/node_modules
+./portfolio-spa/dist
+./portfolio-spa/.env

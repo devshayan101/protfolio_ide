@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0A0A0A;
+    color: #e5e2e1;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #58a6ff;
+    color: #003a6b;
+  }
+}
+
+@layer components {
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(48, 54, 61, 0.15) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(48, 54, 61, 0.15) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .scanline-overlay {
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%),
+      linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+  }
+
+  .terminal-cursor::after {
+    content: '_';
+    display: inline-block;
+    width: 12px;
+    height: 24px;
+    background-color: currentColor;
+    margin-left: 4px;
+    animation: blink 1s step-end infinite;
+  }
+
+  .blinking-cursor::after {
+    content: '_';
+    animation: blink 1s step-end infinite;
+  }
+
+  .terminal-window {
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.05);
+  }
+
+  .terminal-shadow {
+    box-shadow: 0 0 15px -5px rgba(162, 201, 255, 0.2);
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

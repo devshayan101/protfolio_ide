@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Space+Grotesk:wght@400;600;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0A0A0A;
+            background-image: 
+                linear-gradient(rgba(48, 54, 61, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(48, 54, 61, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .terminal-window {
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.05);
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(88, 166, 255, 0.02);
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131313",
+                        "secondary-fixed-dim": "#74dd7e",
+                        "primary-fixed-dim": "#a2c9ff",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#c4ffc2",
+                        "on-primary-fixed": "#001c38",
+                        "on-secondary-fixed": "#002106",
+                        "tertiary": "#ffb77c",
+                        "primary": "#a2c9ff",
+                        "outline": "#8b919d",
+                        "surface-container": "#201f1f",
+                        "on-tertiary-fixed": "#2e1500",
+                        "primary-fixed": "#d3e4ff",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-fixed": "#90fa97",
+                        "surface": "#131313",
+                        "inverse-primary": "#0060aa",
+                        "on-primary": "#00315c",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-fixed-dim": "#ffb77c",
+                        "secondary-container": "#007f2d",
+                        "on-tertiary": "#4d2700",
+                        "secondary": "#74dd7e",
+                        "on-primary-fixed-variant": "#004882",
+                        "on-secondary": "#003910",
+                        "surface-variant": "#353534",
+                        "tertiary-fixed": "#ffdcc2",
+                        "outline-variant": "#414752",
+                        "background": "#131313",
+                        "tertiary-container": "#e48f43",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#c0c7d4",
+                        "on-secondary-fixed-variant": "#00531b",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-fixed-variant": "#6d3900",
+                        "on-primary-container": "#003a6b",
+                        "surface-tint": "#a2c9ff",
+                        "primary-container": "#58a6ff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-container": "#5a2e00",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-bright": "#3a3939",
+                        "on-surface": "#e5e2e1",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#353534"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Space Grotesk"],
+                        "h2": ["Space Grotesk"],
+                        "code-md": ["Fira Code", "monospace"],
+                        "body-lg": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["0.75rem", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "h2": ["2.25rem", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "code-md": ["0.875rem", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["1.125rem", {"lineHeight": "1.7", "fontWeight": "400"}],
+                        "h1": ["4.5rem", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["1rem", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0A0A0A] text-on-surface selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar Shell -->
+<header class="flex justify-between items-center w-full px-6 py-2 bg-[#0A0A0A] fixed top-0 z-50 border-b border-[#30363D]">
+<div class="text-lg font-bold text-[#58A6FF] font-mono">TERMINAL_v2.0.4</div>
+<nav class="hidden md:flex items-center gap-8 font-mono text-sm tracking-tight">
+<a class="text-[#58A6FF] border-b border-[#58A6FF] pb-1" href="#">root</a>
+<a class="text-gray-500 hover:text-gray-300 hover:bg-[#161B22] transition-colors duration-150 cursor-crosshair" href="#">source</a>
+<a class="text-gray-500 hover:text-gray-300 hover:bg-[#161B22] transition-colors duration-150 cursor-crosshair" href="#">bin</a>
+<a class="text-gray-500 hover:text-gray-300 hover:bg-[#161B22] transition-colors duration-150 cursor-crosshair" href="#">usr</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-[#161B22] border border-[#30363D] px-2 py-1 rounded">
+<span class="material-symbols-outlined text-xs text-gray-500 mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs text-on-surface w-32 font-mono" placeholder="grep --search..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-[#58A6FF] cursor-pointer">settings</span>
+<div class="w-8 h-8 rounded-full border border-primary-container overflow-hidden bg-surface-container">
+<img alt="developer avatar" class="w-full h-full object-cover" data-alt="professional male software engineer portrait with minimalist technical background and cool blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD3SQHdWaA6Vf-63AAFuDjYZA51ED1koaCon4nztYm1AsoKp8vWtuWf5Cop9TxeyMsbsCm_f-Wa_1tJG0NTBYqXLiVHE0a2F-DaDM_L3OftdxhkoO326s5RD_Yr-vBHmE6ybDeZIoeruA2--f5eWePgUd7nX0ADMNIvuqE3LddYeRzR5eT_jVGE-NtxGrNzXVIubEwFyRpWGAW3dvHayN5VqFw6Slp8hTK9VYC-sAQVqsN35p80hCGb4TF2nxTDTHcXjCiEOHxNCk"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="hidden md:flex flex-col w-64 h-full fixed left-0 top-0 pt-16 bg-[#161B22] border-r border-[#30363D] z-40">
+<div class="px-6 py-6 border-b border-[#30363D]">
+<div class="text-[#58A6FF] font-black font-mono flex items-center gap-2">
+<span class="material-symbols-outlined">folder_open</span>
+<span>Project_Root</span>
+</div>
+<div class="text-gray-500 font-mono text-[10px] uppercase tracking-widest mt-1">main*</div>
+</div>
+<nav class="flex-1 py-4 font-mono text-xs uppercase tracking-widest">
+<a class="bg-[#0A0A0A] text-[#58A6FF] border-l-2 border-[#58A6FF] flex items-center gap-3 px-6 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-sm">description</span>
+<span>about.tsx</span>
+</a>
+<a class="text-gray-500 flex items-center gap-3 px-6 py-3 hover:bg-[#1c2128] hover:text-[#58A6FF] transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span>experience.sh</span>
+</a>
+<a class="text-gray-500 flex items-center gap-3 px-6 py-3 hover:bg-[#1c2128] hover:text-[#58A6FF] transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-sm">code</span>
+<span>skills.json</span>
+</a>
+<a class="text-gray-500 flex items-center gap-3 px-6 py-3 hover:bg-[#1c2128] hover:text-[#58A6FF] transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-sm">history</span>
+<span>logs.log</span>
+</a>
+</nav>
+<div class="p-6 border-t border-[#30363D]">
+<a class="text-gray-500 flex items-center gap-3 hover:text-[#58A6FF] transition-all duration-200 font-mono text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="md:ml-64 pt-20 pb-12 px-6 min-h-screen">
+<div class="max-w-5xl mx-auto space-y-8">
+<!-- System Info Header -->
+<section class="bg-[#161B22] border border-[#30363D] rounded overflow-hidden terminal-window">
+<div class="bg-[#0A0A0A] px-4 py-2 flex items-center justify-between border-b border-[#30363D]">
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
+<div class="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
+<div class="w-3 h-3 rounded-full bg-[#27C93F]"></div>
+</div>
+<div class="font-mono text-xs text-gray-500 uppercase tracking-widest">system_status.log</div>
+<div class="w-12"></div>
+</div>
+<div class="p-6 grid grid-cols-2 md:grid-cols-4 gap-6 font-mono">
+<div class="space-y-1">
+<div class="text-[10px] text-gray-500 uppercase">OS_KERNEL</div>
+<div class="text-primary-container text-sm">PROD-UX v10.4.1</div>
+</div>
+<div class="space-y-1">
+<div class="text-[10px] text-gray-500 uppercase">UPTIME</div>
+<div class="text-primary-container text-sm">2,920 DAYS</div>
+</div>
+<div class="space-y-1">
+<div class="text-[10px] text-gray-500 uppercase">CPU_LOAD</div>
+<div class="text-primary-container text-sm">82% OPTIMIZED</div>
+</div>
+<div class="space-y-1">
+<div class="text-[10px] text-gray-500 uppercase">MEMORY</div>
+<div class="text-primary-container text-sm">ECC_READY</div>
+</div>
+</div>
+</section>
+<!-- Grid Layout for Main Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Main Editor Content (about.md) -->
+<article class="lg:col-span-8 bg-[#161B22] border border-[#30363D] rounded overflow-hidden terminal-window relative">
+<div class="bg-[#0A0A0A] px-4 py-2 flex items-center gap-4 border-b border-[#30363D]">
+<span class="material-symbols-outlined text-[#58A6FF] text-sm">description</span>
+<span class="font-mono text-xs text-on-surface">about.md</span>
+</div>
+<div class="flex">
+<!-- Line Numbers -->
+<div class="bg-[#0A0A0A] py-8 px-4 text-right font-mono text-xs text-gray-600 border-r border-[#30363D] hidden md:block">
+<div class="mb-1">01</div><div class="mb-1">02</div><div class="mb-1">03</div><div class="mb-1">04</div><div class="mb-1">05</div><div class="mb-1">06</div><div class="mb-1">07</div><div class="mb-1">08</div><div class="mb-1">09</div><div class="mb-1">10</div><div class="mb-1">11</div><div class="mb-1">12</div><div class="mb-1">13</div><div class="mb-1">14</div><div class="mb-1">15</div><div class="mb-1">16</div><div class="mb-1">17</div><div class="mb-1">18</div><div class="mb-1">19</div><div class="mb-1">20</div><div class="mb-1">21</div><div class="mb-1">22</div><div class="mb-1">23</div><div class="mb-1">24</div><div class="mb-1">25</div><div class="mb-1">26</div><div class="mb-1">27</div><div class="mb-1">28</div><div class="mb-1">29</div><div class="mb-1">30</div>
+</div>
+<!-- MD Content -->
+<div class="p-8 flex-1 space-y-12">
+<section id="background">
+<h1 class="font-h1 text-[#58A6FF] text-4xl mb-4 border-b border-[#30363D] pb-2 flex items-center">
+<span class="text-gray-600 mr-4 font-mono text-xl">#</span> Background
+                                </h1>
+<p class="font-body-md text-on-surface leading-relaxed">
+                                    Driven by the intersection of <span class="text-secondary-fixed">efficient systems</span> and <span class="text-tertiary">human-centric design</span>. My journey started in the terminal, building automation scripts for small workflows, which evolved into architecting scalable cloud-native applications. I specialize in turning complex technical debt into clean, maintainable codebases.
+                                </p>
+</section>
+<section id="philosophy">
+<h1 class="font-h1 text-[#58A6FF] text-4xl mb-4 border-b border-[#30363D] pb-2 flex items-center">
+<span class="text-gray-600 mr-4 font-mono text-xl">#</span> Philosophy
+                                </h1>
+<div class="bg-[#0A0A0A] p-6 border-l-4 border-[#58A6FF] italic font-mono text-sm text-gray-400">
+                                    "Code is a communication medium first, and a set of instructions second. If your peer cannot read it, your machine shouldn't execute it."
+                                </div>
+<p class="font-body-md text-on-surface leading-relaxed mt-6">
+                                    I believe in <span class="text-primary">Extreme Simplicity</span>. Whether it's choosing a tech stack or designing a UI component, the goal is always to minimize the cognitive load for the end-user and the maintaining developer.
+                                </p>
+</section>
+<section id="beyond">
+<h1 class="font-h1 text-[#58A6FF] text-4xl mb-4 border-b border-[#30363D] pb-2 flex items-center">
+<span class="text-gray-600 mr-4 font-mono text-xl">#</span> Beyond the Code
+                                </h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-[#0A0A0A] border border-[#30363D] rounded p-4 group hover:border-[#58A6FF] transition-colors">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-[#58A6FF]">camera</span>
+<span class="font-mono text-xs uppercase">Analog Photography</span>
+</div>
+<img class="w-full h-32 object-cover rounded mb-2 grayscale group-hover:grayscale-0 transition-all" data-alt="vintage film camera on a rustic wooden desk with moody low-key lighting and warm tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD-PwMX-HZClkiVznLmP9ul7e3Xj_e6pm0chfORWBREzzn10L9ukP5y83eRpL78-BZE5o-B29Nm6oyzeI4gJnTC21pgWH7a8Ffn1JykuJ3v7VEyFJ6EqHQkqtGV99i9UlQfLLC-H5VfKOTMXtJLeNKeLwpqX2CCWRz7NR5t3qg_vZzcz4S0rNCkpiXRtmgnCHjAgvQwJPRR1rSj22bGyPp3JtjRLBMKbSVBaQc8U7z_a_cp6QTnHxOwpdtjheMXqMskl0MmcrF8kI"/>
+</div>
+<div class="bg-[#0A0A0A] border border-[#30363D] rounded p-4 group hover:border-[#58A6FF] transition-colors">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-[#58A6FF]">keyboard</span>
+<span class="font-mono text-xs uppercase">Mechanical Keyboards</span>
+</div>
+<img class="w-full h-32 object-cover rounded mb-2 grayscale group-hover:grayscale-0 transition-all" data-alt="close up of a custom mechanical keyboard with glowing RGB lighting and specialty keycaps in a dark room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASpGnLfTnWYgCdlfFcvMSMtzRZgpMwjepDf7U7MWHiUHJYYqEEKyeogYgKbTiFcOH-HoKn1SJ8QtoeD2OKfyRwsLkk_eqZssxCJSB-NeGxMys9AeppOKNCWd1iYw-VOuxbMIaCEVEYYVykzvRR9iftrvANAWy0PSPs44JDTFm5NPiRcDa4kVsm4P7NGCfyemyop_2CKTFgIzDIJnBOE3POc_IszWN_yVdYcCNhiGbKYf_PMbRCQsRoIkxts3sJ1TzXDudM0EY1pe4"/>
+</div>
+</div>
+</section>
+<div class="flex items-center font-mono text-xs text-[#58A6FF]">
+<span class="mr-2">$</span> echo "Let's build something." <span class="ml-2 w-2 h-4 bg-[#58A6FF] cursor-blink"></span>
+</div>
+</div>
+</div>
+</article>
+<!-- Sidebar Modules -->
+<div class="lg:col-span-4 space-y-8">
+<!-- Quick Stats Module -->
+<section class="bg-[#161B22] border border-[#30363D] rounded overflow-hidden terminal-window">
+<div class="bg-[#0A0A0A] px-4 py-2 border-b border-[#30363D] flex items-center justify-between">
+<span class="font-mono text-[10px] uppercase text-gray-500">Quick_Stats.json</span>
+<span class="material-symbols-outlined text-xs text-gray-500">expand_more</span>
+</div>
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between border-b border-[#30363D] pb-4">
+<div class="font-mono text-xs text-gray-400">EXP_YEARS</div>
+<div class="font-h2 text-primary-container text-3xl">08</div>
+</div>
+<div class="flex items-center justify-between border-b border-[#30363D] pb-4">
+<div class="font-mono text-xs text-gray-400">COFFEE_UNITS</div>
+<div class="font-h2 text-tertiary text-3xl">4.2k</div>
+</div>
+<div class="flex items-center justify-between border-b border-[#30363D] pb-4">
+<div class="font-mono text-xs text-gray-400">PROJ_DEPLOYED</div>
+<div class="font-h2 text-secondary-fixed text-3xl">124</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="font-mono text-xs text-gray-400">COMMITS_YTD</div>
+<div class="font-h2 text-primary text-3xl">892</div>
+</div>
+</div>
+</section>
+<!-- Profile Module -->
+<section class="bg-[#161B22] border border-[#30363D] rounded overflow-hidden terminal-window">
+<div class="aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-50" data-alt="clean minimal workspace with a laptop displaying code and a warm desk lamp in a dark room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNurgh6IKkk4cXoNwX0_IoSA6U7u2SmAK-d2RzfXOMtPhHuT64U6p_F3U6fO8GMU_bXgG5-CMr2Ga--4pOS4ljZLzfpvK4_SbaIbdz0nUYMrga1wZuISERnq4PbyJSwGCOg19aUeueosZlN0cY2M_JSGboJkoGveukxTDJPF4ht9DgPTsbFRM2mn7jkv-p81pVBFyx7kQDuMSdieAyXu7k3nBYM4xePBqRBFyXp8Ebn3sxmc1w7uNe-nz2YThzUVsOOEFnwWkSlBg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#161B22] to-transparent"></div>
+<div class="absolute bottom-4 left-4 font-mono text-xs text-primary-container">
+                                @system_admin
+                            </div>
+</div>
+<div class="p-6">
+<h3 class="font-h2 text-xl text-[#58A6FF] mb-2">Available for Ops</h3>
+<p class="font-mono text-xs text-gray-500 mb-6 leading-relaxed">
+                                Currently focusing on distributed systems and high-throughput API design. Open for technical consultation and senior engineering roles.
+                            </p>
+<button class="w-full bg-[#58A6FF] hover:bg-[#a2c9ff] text-[#0A0A0A] font-mono text-xs py-3 rounded transition-all duration-150 flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-sm">mail</span>
+                                INIT_CONTACT
+                                <span class="opacity-0 group-hover:opacity-100 transition-opacity">_</span>
+</button>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="fixed bottom-0 w-full flex justify-between items-center px-6 py-1 z-50 bg-[#0A0A0A] border-t border-[#30363D] font-mono text-[10px] uppercase text-gray-600">
+<div class="flex gap-4">
+<span class="text-[#58A6FF]">SYSTEM_STABLE // 2024</span>
+<span class="hidden md:inline">Uptime: 99.9%</span>
+</div>
+<div class="flex gap-4">
+<span class="hidden md:inline">Branch: main</span>
+<span class="hidden md:inline">Latency: 24ms</span>
+<div class="flex items-center gap-2 text-[#58A6FF]">
+<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#74dd7e]"></div>
+                LIVE
+            </div>
+</div>
+</footer>
+</body></html>
