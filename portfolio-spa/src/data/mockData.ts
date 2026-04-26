@@ -1,16 +1,16 @@
 export const developerProfile = {
-  name: 'Alex_Rivers',
+  name: 'MD SHAYAN',
   role: 'Full Stack Engineer',
   xp: 8,
   tagline:
     'Architecting scalable systems and pixel-perfect interfaces with a performance-first mindset. Available for deployment to high-impact engineering teams.',
   terminalData: {
     identity: {
-      name: 'Alex_Rivers',
+      name: 'Md Shayan',
       role: 'Full Stack',
-      xp: 8,
+      xp: 2,
     },
-    stack: ['React.js', 'Node.js', 'Rust', 'AWS'],
+    stack: ['React.js', 'Node.js', 'Express.js', 'Hono.js', 'Next.js', 'Redux Toolkit', 'Tailwind CSS', 'PostgreSQL', 'MongoDb'],
   },
 };
 
@@ -24,23 +24,35 @@ export const skillTags = [
 
 export const aboutData = {
   background:
-    'Driven by the intersection of efficient systems and human-centric design. My journey started in the terminal, building automation scripts for small workflows, which evolved into architecting scalable cloud-native applications. I specialize in turning complex technical debt into clean, maintainable codebases.',
-  philosophy:
-    'Code is a communication medium first, and a set of instructions second. If your peer cannot read it, your machine should not execute it.',
-  philosophyBody:
-    'I believe in Extreme Simplicity. Whether it is choosing a tech stack or designing a UI component, the goal is always to minimize the cognitive load for the end-user and the maintaining developer.',
+    'Driven by the intersection of efficient systems and human-centric design. My journey started in the terminal, building automation scripts for small workflows, which evolved into architecting scalable cloud-native applications.',
+  philosophy: {
+    tag: '<Code as Craft />',
+    body: "I believe software development is a craft. Every line of code should be intentional, every interaction purposeful. Quality isn't an afterthought—it's the foundation.",
+  },
+  expertise: {
+    tag: '<Full-Stack Mastery />',
+    body: 'From React frontends to Node.js backends, I bring comprehensive technical depth. Modern frameworks, cloud infrastructure, and AI integration for production-ready applications.',
+  },
+  approach: {
+    tag: '<Collaborative Process />',
+    body: 'I work as an extension of your team. Clear communication, iterative delivery, and transparent progress. Your success drives my success.',
+  },
   hobbies: [
     {
       title: 'Analog Photography',
       icon: 'camera',
       imageAlt:
         'vintage film camera on a rustic wooden desk with moody low-key lighting and warm tones',
+      imageSrc:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuDD-PwMX-HZClkiVznLmP9ul7e3Xj_e6pm0chfORWBREzzn10L9ukP5y83eRpL78-BZE5o-B29Nm6oyzeI4gJnTC21pgWH7a8Ffn1JykuJ3v7VEyFJ6EqHQkqtGV99i9UlQfLLC-H5VfKOTMXtJLeNKeLwpqX2CCWRz7NR5t3qg_vZzcz4S0rNCkpiXRtmgnCHjAgvQwJPRR1rSj22bGyPp3JtjRLBMKbSVBaQc8U7z_a_cp6QTnHxOwpdtjheMXqMskl0MmcrF8kI',
     },
     {
       title: 'Mechanical Keyboards',
       icon: 'keyboard',
       imageAlt:
         'close up of a custom mechanical keyboard with glowing RGB lighting and specialty keycaps in a dark room',
+      imageSrc:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuASpGnLfTnWYgCdlfFcvMSMtzRZgpMwjepDf7U7MWHiUHJYYqEEKyeogYgKbTiFcOH-HoKn1SJ8QtoeD2OKfyRwsLkk_eqZssxCJSB-NeGxMys9AeppOKNCWd1iYw-VOuxbMIaCEVEYYVykzvRR9iftrvANAWy0PSPs44JDTFm5NPiRcDa4kVsm4P7NGCfyemyop_2CKTFgIzDIJnBOE3POc_IszWN_yVdYcCNhiGbKYf_PMbRCQsRoIkxts3sJ1TzXDudM0EY1pe4',
     },
   ],
   quickStats: {
@@ -57,6 +69,10 @@ export const aboutData = {
   },
   availability:
     'Currently focusing on distributed systems and high-throughput API design. Open for technical consultation and senior engineering roles.',
+  availabilityImage:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBNurgh6IKkk4cXoNwX0_IoSA6U7u2SmAK-d2RzfXOMtPhHuT64U6p_F3U6fO8GMU_bXgG5-CMr2Ga--4pOS4ljZLzfpvK4_SbaIbdz0nUYMrga1wZuISERnq4PbyJSwGCOg19aUeueosZlN0cY2M_JSGboJkoGveukxTDJPF4ht9DgPTsbFRM2mn7jkv-p81pVBFyx7kQDuMSdieAyXu7k3nBYM4xePBqRBFyXp8Ebn3sxmc1w7uNe-nz2YThzUVsOOEFnwWkSlBg',
+  availabilityImageAlt:
+    'clean minimal workspace with a laptop displaying code and a warm desk lamp in a dark room',
 };
 
 export const projectsData = {

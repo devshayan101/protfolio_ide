@@ -14,7 +14,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
         <div className="flex items-center justify-between w-full px-4 md:px-6 h-12 md:h-14">
           <a href="#hero" className="flex items-center gap-1.5 font-mono text-sm md:text-base group">
             <span className="text-gray-500">$</span>
-            <span className="text-primary">alex.rivers</span>
+            <span className="text-primary">md.shayan</span>
             <span className="text-gray-500">@</span>
             <span className="text-on-surface-variant">dev</span>
             <span className="text-gray-500">:</span>
