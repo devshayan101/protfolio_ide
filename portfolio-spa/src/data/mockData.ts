@@ -188,10 +188,11 @@ export const contactData = {
 };
 
 export const navLinks = [
-  { label: 'home.sh', href: '#hero' },
-  { label: 'projects.tsx', href: '#projects' },
-  { label: 'stack.json', href: '#capabilities' },
-  { label: 'contact.py', href: '#contact' },
+  { label: 'work', href: '#projects' },
+  { label: 'about', href: '#about' },
+  { label: 'services', href: '#capabilities' },
+  { label: 'uses', href: '#contact' },
+  { label: 'contact', href: '#contact' },
 ];
 
 export const footerData = {
@@ -200,4 +201,10 @@ export const footerData = {
   branch: 'main',
   latency: '24ms',
   status: 'LIVE',
+};
+
+export const heroMeta = {
+  location: 'Remote',
+  timezone: 'UTC+5:30',
+  version: 'v1.0.0',
 };

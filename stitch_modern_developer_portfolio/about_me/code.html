@@ -6,7 +6,6 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Space+Grotesk:wght@400;600;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
         body {
             background-color: #0A0A0A;
@@ -213,6 +212,7 @@
 <!-- Line Numbers -->
 <div class="bg-[#0A0A0A] py-8 px-4 text-right font-mono text-xs text-gray-600 border-r border-[#30363D] hidden md:block">
 <div class="mb-1">01</div><div class="mb-1">02</div><div class="mb-1">03</div><div class="mb-1">04</div><div class="mb-1">05</div><div class="mb-1">06</div><div class="mb-1">07</div><div class="mb-1">08</div><div class="mb-1">09</div><div class="mb-1">10</div><div class="mb-1">11</div><div class="mb-1">12</div><div class="mb-1">13</div><div class="mb-1">14</div><div class="mb-1">15</div><div class="mb-1">16</div><div class="mb-1">17</div><div class="mb-1">18</div><div class="mb-1">19</div><div class="mb-1">20</div><div class="mb-1">21</div><div class="mb-1">22</div><div class="mb-1">23</div><div class="mb-1">24</div><div class="mb-1">25</div><div class="mb-1">26</div><div class="mb-1">27</div><div class="mb-1">28</div><div class="mb-1">29</div><div class="mb-1">30</div>
+<div class="mb-1">31</div><div class="mb-1">32</div><div class="mb-1">33</div><div class="mb-1">34</div><div class="mb-1">35</div><div class="mb-1">36</div><div class="mb-1">37</div><div class="mb-1">38</div><div class="mb-1">39</div><div class="mb-1">40</div>
 </div>
 <!-- MD Content -->
 <div class="p-8 flex-1 space-y-12">
@@ -221,20 +221,42 @@
 <span class="text-gray-600 mr-4 font-mono text-xl">#</span> Background
                                 </h1>
 <p class="font-body-md text-on-surface leading-relaxed">
-                                    Driven by the intersection of <span class="text-secondary-fixed">efficient systems</span> and <span class="text-tertiary">human-centric design</span>. My journey started in the terminal, building automation scripts for small workflows, which evolved into architecting scalable cloud-native applications. I specialize in turning complex technical debt into clean, maintainable codebases.
+                                    Driven by the intersection of <span class="text-secondary-fixed">efficient systems</span> and <span class="text-tertiary">human-centric design</span>. My journey started in the terminal, building automation scripts for small workflows, which evolved into architecting scalable cloud-native applications.
                                 </p>
 </section>
-<section id="philosophy">
-<h1 class="font-h1 text-[#58A6FF] text-4xl mb-4 border-b border-[#30363D] pb-2 flex items-center">
-<span class="text-gray-600 mr-4 font-mono text-xl">#</span> Philosophy
-                                </h1>
-<div class="bg-[#0A0A0A] p-6 border-l-4 border-[#58A6FF] italic font-mono text-sm text-gray-400">
-                                    "Code is a communication medium first, and a set of instructions second. If your peer cannot read it, your machine shouldn't execute it."
-                                </div>
-<p class="font-body-md text-on-surface leading-relaxed mt-6">
-                                    I believe in <span class="text-primary">Extreme Simplicity</span>. Whether it's choosing a tech stack or designing a UI component, the goal is always to minimize the cognitive load for the end-user and the maintaining developer.
-                                </p>
+<!-- Integrated Modular Blocks -->
+<div class="space-y-6">
+<!-- Philosophy Block -->
+<section class="bg-[#0A0A0A] border border-[#30363D] rounded p-6 group hover:border-[#58A6FF] transition-all relative">
+<div class="absolute top-2 right-4 font-mono text-[10px] text-gray-600 uppercase tracking-widest">philosophy.tsx</div>
+<div class="font-mono text-xs text-gray-500 mb-2">// 01</div>
+<h2 class="font-h2 text-2xl text-on-surface mb-2">Philosophy</h2>
+<div class="font-mono text-xs text-[#58A6FF] mb-4">&lt;Code as Craft /&gt;</div>
+<p class="font-body-md text-gray-400 text-sm leading-relaxed">
+            I believe software development is a craft. Every line of code should be intentional, every interaction purposeful. Quality isn't an afterthought—it's the foundation.
+        </p>
 </section>
+<!-- Expertise Block -->
+<section class="bg-[#0A0A0A] border border-[#30363D] rounded p-6 group hover:border-[#58A6FF] transition-all relative">
+<div class="absolute top-2 right-4 font-mono text-[10px] text-gray-600 uppercase tracking-widest">expertise.tsx</div>
+<div class="font-mono text-xs text-gray-500 mb-2">// 02</div>
+<h2 class="font-h2 text-2xl text-on-surface mb-2">Expertise</h2>
+<div class="font-mono text-xs text-secondary-fixed mb-4">&lt;Full-Stack Mastery /&gt;</div>
+<p class="font-body-md text-gray-400 text-sm leading-relaxed">
+            From React frontends to Node.js backends, I bring comprehensive technical depth. Modern frameworks, cloud infrastructure, and AI integration for production-ready applications.
+        </p>
+</section>
+<!-- Approach Block -->
+<section class="bg-[#0A0A0A] border border-[#30363D] rounded p-6 group hover:border-[#58A6FF] transition-all relative">
+<div class="absolute top-2 right-4 font-mono text-[10px] text-gray-600 uppercase tracking-widest">approach.tsx</div>
+<div class="font-mono text-xs text-gray-500 mb-2">// 03</div>
+<h2 class="font-h2 text-2xl text-on-surface mb-2">Approach</h2>
+<div class="font-mono text-xs text-tertiary mb-4">&lt;Collaborative Process /&gt;</div>
+<p class="font-body-md text-gray-400 text-sm leading-relaxed">
+            I work as an extension of your team. Clear communication, iterative delivery, and transparent progress. Your success drives my success.
+        </p>
+</section>
+</div>
 <section id="beyond">
 <h1 class="font-h1 text-[#58A6FF] text-4xl mb-4 border-b border-[#30363D] pb-2 flex items-center">
 <span class="text-gray-600 mr-4 font-mono text-xl">#</span> Beyond the Code

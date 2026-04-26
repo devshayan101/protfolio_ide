@@ -17,9 +17,9 @@ export default function AboutSection() {
               <span className="font-mono text-xs text-on-surface">about.md</span>
             </div>
             <div className="flex">
-              <div className="bg-[#0A0A0A] py-8 px-4 text-right font-mono text-xs text-gray-600 border-r border-editor-border hidden md:block">
+              <div className="bg-[#0A0A0A] py-8 px-4 text-right font-mono text-xs text-gray-600 border-r border-editor-border hidden md:block leading-6">
                 {lineNumbers.map((n) => (
-                  <div key={n} className="mb-1">{n}</div>
+                  <div key={n} className="h-6">{n}</div>
                 ))}
               </div>
               <div className="p-4 md:p-8 flex-1 space-y-8 md:space-y-12">
